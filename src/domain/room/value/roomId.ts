@@ -1,11 +1,8 @@
 export class RoomId {
-    private readonly _value: string
-
-    constructor(value: string) {
-        if (value.length === 0) {
+    constructor(private readonly _value: string) {
+        if (_value.length === 0) {
             throw new Error('RoomId cannot be empty')
         }
-        this._value = value
     }
 
     get value() {
