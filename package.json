@@ -8,9 +8,11 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "uuid": "^8.3.2",
     "vue": "^3.2.16"
   },
   "devDependencies": {
+    "@types/uuid": "^8.3.1",
     "@vitejs/plugin-vue": "^1.9.3",
     "autoprefixer": "^10.3.7",
     "postcss": "^8.3.9",
