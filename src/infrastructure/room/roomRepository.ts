@@ -8,7 +8,7 @@ export class RoomRepository extends RoomRepositoryBase {
 
     async findById(id: RoomId): Promise<Room | null> {
         for (const room of this._rooms) {
-            if (room.id === id) {
+            if (room.id.equals(id)) {
                 return room
             }
         }
@@ -17,7 +17,7 @@ export class RoomRepository extends RoomRepositoryBase {
 
     async findByTitle(title: RoomTitle): Promise<Room | null> {
         for (const room of this._rooms) {
-            if (room.title === title) {
+            if (room.title.equals(title)) {
                 return room
             }
         }

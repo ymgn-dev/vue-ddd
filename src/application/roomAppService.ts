@@ -12,6 +12,7 @@ export class RoomAppService {
     constructor(
         private readonly _factory: RoomFactoryBase,
         private readonly _repository: RoomRepositoryBase,
+        // TODO: TalkRepositoryは現状未使用だが今後のために定義しておく
         private readonly _talkRepository: TalkRepositoryBase
     ) {
         this._service = new RoomService(_repository)

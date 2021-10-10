@@ -8,7 +8,7 @@ export class TalkRepository extends TalkRepositoryBase {
 
     async findById(roomId: RoomId, talkId: TalkId): Promise<Talk | null> {
         for (const talk of this._talks) {
-            if (talk.roomId === roomId && talk.talkId === talkId) {
+            if (talk.roomId.equals(roomId) && talk.talkId.equals(talkId)) {
                 return talk
             }
         }
@@ -18,7 +18,7 @@ export class TalkRepository extends TalkRepositoryBase {
     async findByRoom(id: RoomId): Promise<Talk[]> {
         const result: Talk[] = []
         for (const talk of this._talks) {
-            if (talk.roomId === id) {
+            if (talk.roomId.equals(id)) {
                 result.push(talk)
             }
         }
