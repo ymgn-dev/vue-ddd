@@ -1,10 +1,11 @@
 <template>
-    <RoomList />
+    <RoomList @room-id="setRoomId" />
+    <TalkList :room-id="roomId" />
 </template>
 
 <script setup lang="ts">
 import { provide } from '@vue/runtime-core'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { RoomAppService } from './application/roomAppService'
 import { TalkAppService } from './application/talkAppService'
 import { RoomFactory } from './infrastructure/room/roomFactory'
@@ -15,6 +16,7 @@ import { Keys } from './presentation/states/keys'
 import roomController from './presentation/states/roomState'
 import talkController from './presentation/states/talkState'
 import RoomList from './components/RoomList.vue'
+import TalkList from './components/TalkList.vue'
 
 const _talkFactory = new TalkFactory()
 const _talkRepository = new TalkRepository()
@@ -32,6 +34,11 @@ const _roomAppService = new RoomAppService(
 
 provide(Keys.TalkControllerKey, reactive(talkController(_talkAppService)))
 provide(Keys.RoomControllerKey, reactive(roomController(_roomAppService)))
+
+const roomId = ref('')
+const setRoomId = (value: string) => {
+    roomId.value = value
+}
 </script>
 
 <style>
